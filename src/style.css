@@ -1,0 +1,29 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+#container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+nav > section {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+nav > section > p:hover {
+    background-color: #EEE;
+}
+
+#todo-list > div {
+    display: flex;
+    border: 2px solid black;
+    justify-content: space-between;
+}
+
+
+div > p {
+    flex: 1;
+}
