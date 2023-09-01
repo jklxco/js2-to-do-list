@@ -1,4 +1,5 @@
 let taskContainer = document.querySelector('#todo-list');
+import {format} from '../node_modules/date-fns'
 
 function displayProjects(todoArray, projectName = ''){
     if (projectName === '') {
@@ -12,20 +13,22 @@ function displayProjects(todoArray, projectName = ''){
 // NEED TO SEPARATE LOGIC USED TO DISPLY DOM FROM THAT
 // USED TO FILTER WHAT SHOULD BE DISAPLYED
 
-
 function displayDOM(arr){
     taskContainer.replaceChildren()
     arr.forEach(obj => displayToDo(obj));
+    
 }
 
 function displayToDo(todo){
     let todoDiv = document.createElement('div');
     for (const property in todo) {
         let div = document.createElement('p');
-        div.textContent = todo[property];
+        (property === 'dueDate') ? div.textContent = format(todo[property], 'dd/MM/yyyy') :
+            div.textContent = todo[property];
         todoDiv.appendChild(div);
     }
+    todoDiv.classList.add('high');
     taskContainer.appendChild(todoDiv)
 }
 
-export {displayProjects, displayToDo};
+export {displayProjects, displayToDo, displayDOM};
